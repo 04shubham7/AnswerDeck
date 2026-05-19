@@ -18,3 +18,12 @@ To run the project locally:
 
 See individual scripts for more details.
 
+Testing
+-------
+
+Run the minimal smoke test suite with:
+
+```
+pytest -q
+```
+
