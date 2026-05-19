@@ -1,0 +1,10 @@
+# Project dependencies for 05-rag-1-work
+python-dotenv
+qdrant-client
+langchain
+pypdf
+langchain-qdrant
+langchain-google-genai
+langchain-community
+langchain-text-splitters
+pytest
