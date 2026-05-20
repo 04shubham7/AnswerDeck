@@ -1,5 +1,72 @@
+"""Docker Compose configuration with all services."""
+
+version: '3.8'
+
 services:
+  # Qdrant Vector Database
   vector-db:
-    image: qdrant/qdrant
+    image: qdrant/qdrant:v1.7.0
+    container_name: answerdeck-qdrant
     ports:
       - "6333:6333"
+    volumes:
+      - qdrant-storage:/qdrant/storage
+    environment:
+      QDRANT_API_KEY: answerdeckkey
+    networks:
+      - answerdeck-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: answerdeck-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - QDRANT_URL=http://vector-db:6333
+      - LOG_LEVEL=INFO
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    depends_on:
+      vector-db:
+        condition: service_healthy
+    networks:
+      - answerdeck-network
+    command: python main.py
+
+  # Frontend Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: answerdeck-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    depends_on:
+      - backend
+    networks:
+      - answerdeck-network
+    command: npm run dev
+
+volumes:
+  qdrant-storage:
+    driver: local
+
+networks:
+  answerdeck-network:
+    driver: bridge
