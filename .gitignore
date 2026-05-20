@@ -1,21 +1,38 @@
-__pycache__/
-*.py[cod]
-.env
-.venv
-venv/
-env/
-.venv/
-*.egg-info/
-.vscode/
-.idea/
-.DS_Store
-node_modules/
-dist/
-build/
-*.log.env
-__pycache__/
+# Testing
+/coverage
+/.pytest_cache
+/htmlcov
 *.pyc
-.vscode/
+__pycache__
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Frontend
 node_modules/
-dist/
 build/
+dist/
+.next/
+
+# Python
+/venv
+/env
+*.egg-info/
+.Python
