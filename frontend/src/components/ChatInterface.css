@@ -1,0 +1,31 @@
+/* Chat Interface Styles */
+
+.chat-interface {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 1.5rem;
+  height: 100vh;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .chat-interface {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-interface {
+    height: auto;
+    min-height: 100vh;
+  }
+}
