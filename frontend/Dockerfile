@@ -1,4 +1,4 @@
-"""Dockerfile for frontend application."""
+# Dockerfile for frontend application.
 
 FROM node:18-alpine AS builder
 
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 # Copy source
 COPY . .

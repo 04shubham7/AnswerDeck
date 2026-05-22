@@ -1,4 +1,4 @@
-/* Message List Styles */
+/* Message List Styles - Premium Dark Theme */
 
 .message-list {
   flex: 1;
@@ -6,7 +6,8 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+  scrollbar-gutter: stable;
 }
 
 .empty-state {
@@ -15,39 +16,75 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #999;
+  color: hsl(215, 15%, 65%);
   text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.empty-state-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(262, 85%, 75%);
+  box-shadow: 0 0 20px rgba(118, 75, 162, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-icon svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .empty-state h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #333;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.25px;
+}
+
+.empty-state p {
+  font-size: 0.875rem;
+  max-width: 320px;
+  line-height: 1.5;
 }
 
 .error-message {
   padding: 1rem;
-  background-color: #fee;
-  color: #c00;
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 4px solid hsl(0, 100%, 65%);
+  border-top: 1px solid rgba(239, 68, 68, 0.12);
+  border-right: 1px solid rgba(239, 68, 68, 0.12);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.12);
+  color: hsl(0, 100%, 80%);
   border-radius: 8px;
-  border-left: 4px solid #c00;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .loading-indicator {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  color: #666;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  color: hsl(215, 15%, 70%);
+  font-size: 0.85rem;
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid #ddd;
-  border-top: 3px solid #667eea;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid hsl(262, 80%, 60%);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {

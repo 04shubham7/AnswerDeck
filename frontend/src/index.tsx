@@ -1,4 +1,4 @@
-"""Next.js Frontend Entry Point."""
+// Next.js Frontend Entry Point.
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
