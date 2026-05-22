@@ -21,17 +21,16 @@ DRY_RUN = "--dry-run" in sys.argv
 # Vector Embeddings
 embeddings_model=GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
 
-
-vector_db=QdrantVectorStore.from_existing_collection(
-    url="http://localhost:6333",
-    collection_name="learning_vectors",
-    embedding=embeddings_model,
-)
-
 #Take User Input/Query
 
 def main():
     query = input(">> Enter your query: ")
+
+    vector_db=QdrantVectorStore.from_existing_collection(
+        url="http://localhost:6333",
+        collection_name="learning_vectors",
+        embedding=embeddings_model,
+    )
 
     # Vector Similarity Search in Vector DB
     search_results = vector_db.similarity_search(query, k=3)

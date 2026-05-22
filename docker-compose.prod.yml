@@ -30,11 +30,6 @@ services:
       QDRANT_API_KEY: ${QDRANT_API_KEY:-answerdeckkey}
     networks:
       - answerdeck-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   # Backend API
   backend:
@@ -54,10 +49,8 @@ services:
     volumes:
       - ./logs:/app/logs
     depends_on:
-      qdrant:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - qdrant
+      - redis
     networks:
       - answerdeck-network
     command: python main.py

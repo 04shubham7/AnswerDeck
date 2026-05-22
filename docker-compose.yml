@@ -1,4 +1,4 @@
-"""Docker Compose configuration with all services."""
+# Docker Compose configuration with all services.
 
 version: '3.8'
 
@@ -15,11 +15,6 @@ services:
       QDRANT_API_KEY: answerdeckkey
     networks:
       - answerdeck-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   # Backend API
   backend:
@@ -38,8 +33,7 @@ services:
       - ./src:/app/src
       - ./logs:/app/logs
     depends_on:
-      vector-db:
-        condition: service_healthy
+      - vector-db
     networks:
       - answerdeck-network
     command: python main.py
@@ -49,6 +43,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      target: builder
     container_name: answerdeck-frontend
     ports:
       - "3000:3000"
@@ -61,7 +56,7 @@ services:
       - backend
     networks:
       - answerdeck-network
-    command: npm run dev
+    command: npm start
 
 volumes:
   qdrant-storage:
