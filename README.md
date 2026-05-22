@@ -15,6 +15,62 @@ AnswerDeck is a full-stack Retrieval-Augmented Generation (RAG) application that
 🔒 **Production Ready** - Comprehensive testing, error handling, and monitoring  
 📦 **Containerized** - Easy deployment with Docker and Docker Compose  
 
+## User Interface & Dashboard
+
+AnswerDeck features a premium dark-themed, glassmorphic dashboard divided into two functional columns:
+
+- **Left Control Panel**: Displays the live operational status of the RAG engine, environment configuration, Qdrant node endpoint, and active collections. It hosts the ingestion hub supporting **Local PDF Drag-and-Drop** upload and **Amazon S3 Document Ingestion** configuration.
+- **Right Chat Panel**: Interactive AI Assistant showing streaming thinking levels (`Analyse`, `Retrieve`, `Execute`, `Validation`) and retrieved source snippets in real-time.
+
+### Screenshots
+
+#### 1. System Dashboard Overview
+![Dashboard Overview](docs/images/dashboard_overview.png)
+
+#### 2. Ingestion Hub (Local PDF & Amazon S3 Settings)
+![Ingestion Hub](docs/images/dashboard_ingestion.png)
+
+#### 3. Real-Time Streaming Chat & Reasoning Timeline
+![Real-Time Chat](docs/images/dashboard_chat.png)
+
+## System Architecture & Flow
+
+### 1. Document Ingestion Flow
+
+The document ingestion pipeline processes documents to generate vector embeddings and index them in the Qdrant cluster:
+
+```mermaid
+graph TD
+    A[Start: PDF Document] --> B{Ingestion Method}
+    B -->|Local Upload| C[Drag & Drop / Select PDF]
+    B -->|Amazon S3| D[Enter Bucket, Key & Credentials]
+    C --> E[POST /api/v1/ingest/file]
+    D --> F[POST /api/v1/ingest/s3]
+    E --> G[Download/Write Temp File]
+    F --> G
+    G --> H[PyPDFLoader: Load Document]
+    H --> I[RecursiveCharacterTextSplitter: Split into Chunks]
+    I --> J[Google Embedding Model: Generate Dense Vectors]
+    J --> K[Qdrant Client: Index Chunks into Vector Store]
+    K --> L[Finish: Indexing Completed & Success Returned]
+```
+
+### 2. Query Retrieval & Streaming Reasoning Flow
+
+When a user submits a query, the streaming reasoning engine executes a multi-step cognitive pipeline:
+
+```mermaid
+graph TD
+    A[User Query] --> B[POST /api/v1/chat/stream]
+    B --> C[Analyse Step: Identify Intents & Keyword Analysis]
+    C --> D[Retrieve Step: Dense Vector Search in Qdrant]
+    D --> E[Execute Step: Synthesize Grounded Answer via Gemini LLM]
+    E --> F[Validation Step: Cross-check Citations & Hallucination Check]
+    F --> G[Done Step: Return Final Synthesized Response with Citations]
+```
+
+
+
 ## Tech Stack
 
 ### Backend
