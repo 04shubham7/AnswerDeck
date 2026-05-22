@@ -1,12 +1,12 @@
 # Core dependencies
-python-dotenv==1.0.0
-qdrant-client==2.7.0
-langchain==0.1.0
-langchain-qdrant==0.1.0
-langchain-google-genai==0.0.5
-langchain-community==0.0.10
-langchain-text-splitters==0.0.1
-pypdf==4.0.1
+python-dotenv>=1.0.7
+qdrant-client>=1.18.0
+langchain>=0.1.0
+langchain-qdrant>=0.1.0
+langchain-google-genai>=0.0.5
+langchain-community>=0.0.10
+langchain-text-splitters>=0.0.1
+pypdf>=4.0.1
 
 # API Framework
 fastapi==0.104.1
