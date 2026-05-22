@@ -22,16 +22,14 @@ AnswerDeck features a premium dark-themed, glassmorphic dashboard divided into t
 - **Left Control Panel**: Displays the live operational status of the RAG engine, environment configuration, Qdrant node endpoint, and active collections. It hosts the ingestion hub supporting **Local PDF Drag-and-Drop** upload and **Amazon S3 Document Ingestion** configuration.
 - **Right Chat Panel**: Interactive AI Assistant showing streaming thinking levels (`Analyse`, `Retrieve`, `Execute`, `Validation`) and retrieved source snippets in real-time.
 
-### Screenshots
 
 #### 1. System Dashboard Overview
-![Dashboard Overview](docs/images/dashboard_overview.png)
-
 #### 2. Ingestion Hub (Local PDF & Amazon S3 Settings)
-![Ingestion Hub](docs/images/dashboard_ingestion.png)
-
 #### 3. Real-Time Streaming Chat & Reasoning Timeline
-![Real-Time Chat](docs/images/dashboard_chat.png)
+<img width="1919" height="875" alt="image" src="https://github.com/user-attachments/assets/be5871a0-1c3d-4555-a71f-e538e4323a7d" />
+<img width="1919" height="873" alt="image" src="https://github.com/user-attachments/assets/6d84bae9-1a0c-459b-b7cb-ea4104cf130f" />
+
+
 
 ## System Architecture & Flow
 
