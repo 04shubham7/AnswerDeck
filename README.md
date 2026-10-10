@@ -25,8 +25,8 @@ AnswerDeck features a premium dark-themed, glassmorphic dashboard divided into t
 #### 1. System Dashboard Overview
 #### 2. Ingestion Hub (Local PDF & Amazon S3 Settings)
 #### 3. Real-Time Streaming Chat & Reasoning Timeline
-<img width="1919" height="875" alt="image" src="[https://github.com/user-attachments/assets/be5871a0-1c3d-4555-a71f-e538e4323a7d](https://github.com/user-attachments/assets/be5871a0-1c3d-4555-a71f-e538e4323a7d)" />
-<img width="1919" height="873" alt="image" src="[https://github.com/user-attachments/assets/6d84bae9-1a0c-459b-b7cb-ea4104cf130f](https://github.com/user-attachments/assets/6d84bae9-1a0c-459b-b7cb-ea4104cf130f)" />
+<img width="1919" height="875" alt="image" src="https://github.com/user-attachments/assets/be5871a0-1c3d-4555-a71f-e538e4323a7d" />
+<img width="1919" height="873" alt="image" src="https://github.com/user-attachments/assets/6d84bae9-1a0c-459b-b7cb-ea4104cf130f" />
 
 ## System Architecture & Flow
 
